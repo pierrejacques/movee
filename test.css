@@ -1,0 +1,128 @@
+body{
+    background:
+	repeating-linear-gradient(
+		50deg,
+		rgba(255, 222, 168, 0.1) 0,
+		rgba(255, 222, 168, 0.1) 4em,
+		rgba(208, 228, 176, 0.1) 0,
+		rgba(208, 228, 176, 0.1) 6em,
+		rgba(124, 197, 208, 0.1) 0,
+		rgba(124, 197, 208, 0.1) 8em,
+		rgba(0, 162, 225, 0.1) 0,
+		rgba(0, 162, 225, 0.1) 10em,
+		rgba(0, 133, 200, 0.1) 0,
+		rgba(0, 133, 200, 0.1) 12em
+	),
+    repeating-linear-gradient(
+		-90deg,
+		rgba(255, 222, 168, 0.1) 0,
+		rgba(255, 222, 168, 0.1) 3em,
+		rgba(208, 228, 176, 0.1) 0,
+		rgba(208, 228, 176, 0.1) 4.5em,
+		rgba(124, 197, 208, 0.1) 0,
+		rgba(124, 197, 208, 0.1) 6em,
+		rgba(0, 162, 225, 0.1) 0,
+		rgba(0, 162, 225, 0.1) 7.5em,
+		rgba(0, 133, 200, 0.1) 0,
+		rgba(0, 133, 200, 0.1) 9em
+	),
+    linear-gradient(175deg ,
+        #ee60f4,
+        #8a7cf4 70vh,
+        #7364e8 calc(100% - 70vh),
+        #2daecc 100%);
+    background-blend-mode: multiply;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-family:calibri,sans-serif;
+    margin-bottom:40vh;
+}
+
+div{
+    width:100%;
+    height:100vh;
+}
+h1{ 
+    width: 100%;
+    padding: 30vh 0 17vh;
+    white-space: nowrap;
+    font-size: 10vh;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 small{
+    font-size: 4vh;
+    padding-left: 20px;
+}
+
+button{
+    position:relative;
+    height:30px;    /**/
+    width:30px;     /**/
+    background: none;
+    border:9px solid rgba(255, 255, 255, 0.5);
+    border-left: none;
+    border-top: none;
+    transform: rotate(45deg);
+    animation: bounce 2.5s infinite;
+    outline:none;
+}
+
+button::before{
+    content:'';
+    position: absolute;
+    top:-20px;left:-20px;right:-40px;bottom:-40px;
+    cursor:pointer;
+}
+
+code{
+    margin: 30px 0;
+    padding: 0 10px;
+    font-size: 1.5em;
+    font-family:inherit;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.78);
+}
+
+a{
+    display: block;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-family:sans-serif;/*better use fatasy*/
+    font-weight:bolder;
+    color:#3d3a55;
+}
+
+a:before{
+    content: '';
+	display: block;
+    position: relative;
+	width: 3rem;
+	height: 3rem;
+	margin: 30vh auto 1em;
+	border: 1rem solid;
+	color: #ff8000;
+	box-sizing: border-box;
+	animation: 1s spin, 0.7s border-radius, 1.1s border-color, 1.3s border-width;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+canvas{
+    width:100%;
+    margin-bottom: 2em;
+}
+
+@keyframes bounce{
+    7% {top:0;}
+    14% {top:10px;} 
+    20% {top:0;}
+    27% {top:10px;}
+    35% {top:0px;}
+}
+
+@keyframes border-color {33% {border-color: aquamarine;} 66% {border-color:crimson;} }
+@keyframes spin {to {transform: rotate(1turn);}}
+@keyframes border-width {50% {border-width:.3rem;}}
+@keyframes border-radius {50% {border-radius:50%;}}
+
