@@ -1,5 +1,9 @@
+html::-webkit-scrollbar {
+  width: 0;
+}
+
 body{
-    background:
+  background:
 	repeating-linear-gradient(
 		50deg,
 		rgba(255, 222, 168, 0.1) 0,
@@ -30,24 +34,52 @@ body{
         #ee60f4,
         #8a7cf4 70vh,
         #7364e8 calc(100% - 70vh),
-        #2daecc 100%);
-    background-blend-mode: multiply;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-    font-family:calibri,sans-serif;
-    margin-bottom:40vh;
+        #2daecc 100%
+  );
+  background-blend-mode: multiply;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-family:calibri,sans-serif;
+  margin-bottom:40vh;
+}
+/* body 加载样式 */
+body.loading {
+  pointer-events: none;
+  height: 100vh;
+  overflow: hidden;
+}
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+  opacity: 0;
+  transition: 0.3s;
+}
+body.loading::before {
+  opacity: 0.7;
+}
+body.loading::after {
+  content: '';
+  position: absolute;
+  width: 70px; height: 70px;
+  top: 60%; left: calc(50% - 35px);
+  border-radius: 50%;
+  border: 10px dashed white;
+  animation: rotator 2.5s infinite;
+  animation-timing-function: linear;
 }
 
 div{
     width:100%;
     height:100vh;
 }
-h1{ 
+h1{
     width: 100%;
     padding: 30vh 0 17vh;
     white-space: nowrap;
     font-size: 10vh;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 0 10px rgba(255, 255, 200, 0.4);
 }
 
 h1 small{
@@ -55,17 +87,22 @@ h1 small{
     padding-left: 20px;
 }
 
+body.loading button {
+  display: none;
+}
+
 button{
-    position:relative;
-    height:30px;    /**/
-    width:30px;     /**/
-    background: none;
-    border:9px solid rgba(255, 255, 255, 0.5);
-    border-left: none;
-    border-top: none;
-    transform: rotate(45deg);
-    animation: bounce 2.5s infinite;
-    outline:none;
+  display: inline-block;
+  position:relative;
+  height:30px;    /**/
+  width:30px;     /**/
+  background: none;
+  border:9px solid rgba(255, 255, 255, 0.5);
+  border-left: none;
+  border-top: none;
+  transform: rotate(45deg);
+  animation: bounce 2.5s infinite;
+  outline:none;
 }
 
 button::before{
@@ -113,16 +150,28 @@ canvas{
     margin-bottom: 2em;
 }
 
+/* 不支持提示 */
+#show p {
+  position: relative;
+  top: -35vw;
+  width: 100%;
+  text-align: center;
+}
+
 @keyframes bounce{
     7% {top:0;}
-    14% {top:10px;} 
+    14% {top:10px;}
     20% {top:0;}
     27% {top:10px;}
     35% {top:0px;}
+}
+
+@keyframes rotator {
+  from { transform: rotate(0); }
+  to { transform: rotate(1turn); }
 }
 
 @keyframes border-color {33% {border-color: aquamarine;} 66% {border-color:crimson;} }
 @keyframes spin {to {transform: rotate(1turn);}}
 @keyframes border-width {50% {border-width:.3rem;}}
 @keyframes border-radius {50% {border-radius:50%;}}
-

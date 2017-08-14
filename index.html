@@ -6,25 +6,44 @@
 <link rel="stylesheet" type="text/css" href="test.css" />
 </head>
 
-<body>
-<div>
-<h1>Movee effect<small>canvas-movee</small></h1>
-<button></button>
-</div>
-<canvas class="canvas-movee right" src="test.jpg"></canvas> 
-<code>&lt;canvas class="
-    <span style="color:white">canvas-movee right
-    </span>" src="
-    <span style="color:white">yourImage</span>"&gt;&lt;/canvas&gt;
-</code>
-<a href="movee.js" target="_blank">movee.js</a>
-<script src="movee.js"></script>
-<script>
-$(document).ready(function(){
+<body class="loading">
+  <div>
+    <h1>Movee effect<small>canvas-movee</small></h1>
+    <button></button>
+  </div>
+  <div id="show">
+    <canvas class="canvas-movee right" src="test.jpg"></canvas>
+  </div>
+  <code>&lt;canvas class="
+      <span style="color:white">canvas-movee right
+      </span>" src="
+      <span style="color:white">yourImage</span>"&gt;&lt;/canvas&gt;
+  </code>
+  <a href="movee.js" target="_blank">movee.js</a>
+
+  <script src="movee.js"></script>
+
+  <script>
+  const support = 'clipPath' in document.documentElement.style || 'WebkitClipPath' in document.documentElement.style;
+
+  $(document).ready(function(){
+    // 加载图片
+    const dummyImg = new Image();
+    dummyImg.src = "./test.jpg"
+    dummyImg.onload = () => {
+      $('body').removeClass('loading')
+    }
+    // 按键下滑
     var $target = $('html,body');
     $('button').on('click',function(){
-        $target.animate({scrollTop:$(document).height()-$(window).height()},1500,'linear');
-    });  
-});
-</script>
+      $target.animate({scrollTop:$(document).height()-$(window).height()},1500,'linear');
+    });
+    // 不支持
+    if (!support) {
+      const $p = document.createElement('p');
+      $p.innerHTML = "很抱歉您当前的浏览器不支持此功能<br/>Sorry, function not supported by your browser";
+      $('#show').append($p);
+    }
+  });
+  </script>
 </body>
