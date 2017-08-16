@@ -1,9 +1,7 @@
 const canvas = document.getElementsByClassName('canvas-movee');
 const $canvas = [].slice.call(canvas);
 window.onload = () => {
-  if ($canvas.length) {
-    $canvas.forEach(item => moveeCanvas(item));
-  }
+  $canvas.forEach(item => moveeCanvas(item));
 };
 
 let timer;
