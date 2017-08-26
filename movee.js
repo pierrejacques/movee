@@ -4,7 +4,6 @@ window.onload = () => {
   $canvas.forEach(item => moveeCanvas(item));
 };
 
-let timer;
 const moveeCanvas = c => {
   const cImg = new Image();
   cImg.setAttribute('src', c.getAttribute('src'));
